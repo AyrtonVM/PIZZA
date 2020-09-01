@@ -1,0 +1,51 @@
+package lingo;
+import java.util.Random;
+import java.util.Scanner;
+
+public class MainA {
+    public static void main(String[] args ) { 
+        String[] strings = { "Pizza", "Tafel", "Kabel", "Dadel", "Fiets" }; // random words in array
+        boolean started = true; 
+        
+        int lingoWoord = new Random().nextInt(strings.length); // int lingoWoord verteld length string
+        
+        String woordLingo = strings[lingoWoord];        
+        System.out.println("Welkom bij Lingo, U kan u beginnen met raden"); // uitprint dat je kunt beginnen
+        Scanner scanner = new Scanner(System.in);  // scant ingevoerde woord
+        char[] letters = new char[woordLingo.length()]; 
+        int i = 0; // int is 0
+        while (i < 5 ) { // als er 5x is geraden dan stopt het spel
+    		i++; // i + 1
+        String userInput = scanner.nextLine(); // scant user input
+
+
+                		
+            if (userInput.length() != woordLingo.length()) // als input length ongelijk is aan lingo woord length 
+            {
+                System.out.println("Je woord moet 5 letters lang zijn");  // uit print hoe lang je woord moet zijn  
+                continue; // spel gaat door
+            }
+
+        for(int p = 0; p < woordLingo.length(); p++) {  // als woorlingo length groter is dan i komt er bij i +1
+            if (woordLingo.charAt(p) == userInput.charAt(p)) {
+                letters[p] = woordLingo.charAt(p); // juiste letters krijgen juiste letters toe gediend
+            }
+            else {
+                letters[p] = 'X'; // foute letters krijgen x toe gediend
+            }
+        }
+            
+
+        
+        System.out.println(letters); // print uit letters, welke letters onjuist of juist zijn
+        String letterWoord = new String(letters); // creert nieuw object
+        if (letterWoord.contentEquals(userInput)) { // als woord gelijk is aan userInput
+            System.out.println("Gewonnen! dit kostte u " + i + " keer!"); // print uit gewonnen
+            started = false; // spel stopt
+        }
+    }
+        System.out.print("U heeft helaas verloren!"); // geeft aan dat je hebt verloren, komt automatisch na 5 x raden
+
+}
+}
+
